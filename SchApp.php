@@ -7,14 +7,23 @@ include('session.php');
 $result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
 $row=mysqli_fetch_array($result);
 $email=$row['email'];
+/* Getting entry date from CentralDatabase */
 $query1 		= mysqli_query($con, "SELECT * FROM CentralDatabase WHERE email='$email'");
 $row1		= mysqli_fetch_array($query1);
-$num_row1 	= mysqli_num_rows($query1);
-if ($num_row1 > 0) 
+$stamp1=$row1['CurrentDate']; 
+/* Preparing timestamps for finding difference */
+$today1 = date('Y-m-d h:i:s', time());
+$end1 = date ('Y-m-d h:i:s', strtotime ($stamp1 ."+365 days")); 
+/* Finding difference and storing in $time1 */
+$ts11 = strtotime($today1); 
+$ts22 = strtotime($end1);      
+$seconds_diff1 = $ts22 - $ts11;                            
+$time1 = round(($seconds_diff1/(3600*24)));
+if($time1>0)
 {
 	    header('location:timer.php');
-}
- ?>
+} 
+?>
 
 <html>
 <head>
@@ -269,7 +278,7 @@ if ($num_row1 > 0)
 			<label for="PrevEdType">* Education Type:</label>
 			<select name="PrevEdType" required="required" autofocus required>
 				<option selected hidden value="">
-				<option value="High School">High School</option>
+				<option value="HighSchool">High School</option>
 				<option value="Associate">Associate</option>
 				<option value="Bachelors">Bachelors</option>
 				<option value="Masters">Masters</option>
@@ -290,6 +299,7 @@ if ($num_row1 > 0)
 			<label for="PrevEdGradDate">* Completion/ Grad Date:</label>
 			<input type="date" name="PrevEdGradDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" autofocus required></input>
 		</div>
+		
 		<br>
 		<hr>
 		
@@ -385,8 +395,7 @@ the Knox County Foundation. </span></p>
 		<div class="form-radio">
 			<input type="radio" name="Agreement" value="Agree" required> Agree	
 		</div>
-
-
+		
 		<div class="form-item">
 			<label for="ApplicantSignature">* Applicant Signature:</label>
 			<input type="text" name="ApplicantSignature" required="required" autofocus required></input>
