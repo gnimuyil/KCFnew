@@ -37,7 +37,7 @@ if ($num_row1 > 0)
 	  top: 50%;
 	  left: 46%;
 	  margin: -184px 0px 0px -184px;
-	  background: #3b3b3b;
+	  background: rgba(18, 18, 18, 0.95);
 	  padding: 15px 25px;
 	  border-radius: 5px;
 	  box-shadow: 0px 1px 0px rgba(0,0,0,0.6),inset 0px 1px 0px rgba(255,255,255,0.04);
@@ -62,7 +62,7 @@ if ($num_row1 > 0)
 	box-sizing: border-box;
 	  border: 2px solid #ccc;
 	  border-radius: 4px;
-	  background-color: #3b3b3b;
+	  background: rgba(18, 18, 18, 0.95);
 	  margin-top:5px;
 	  margin-bottom: 15px;
 	  font-family: 'Open Sans', sans-serif;
