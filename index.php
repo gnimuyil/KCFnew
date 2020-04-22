@@ -2,13 +2,15 @@
 <?php include('dbcon.php'); ?>
 <html>
 <head>
+
 <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 <div class="form-wrapper">
   
   <form action="#" method="post">
-    <h3>Login here</h3>
+    <h3>Login Here</h3>
 	
     <div class="form-item">
 		<input type="text" name="user" required="required" placeholder="Email" autofocus required></input>
@@ -18,6 +20,7 @@
 		<input type="password" name="pass" required="required" placeholder="Password" required></input>
     </div>
     
+	<br>
     <div class="button-panel">
 		<input type="submit" class="button" title="Log In" name="login" value="Login"></input>
     </div>
@@ -55,6 +58,8 @@
 				}
 		}
   ?>
+  <br>
+  
   <div class="reminder">
     <p>Not a member? <a href="/class/ssd/li2/ResponsiveRegistration.html">Sign up now</a></p>
 		  </div>
