@@ -80,6 +80,28 @@ if (!empty($email) || !empty($Phone)||
      $stmt->bind_result($email);
      $stmt->store_result();
      $rnum = $stmt->num_rows;
+	 	 if ($rnum!=0)
+	 {
+		 $link = mysqli_connect("localhost", "baitan1", "S216242", "CommunityScholarship"); 
+  
+			if($link === false){ 
+		die("ERROR: Could not connect. " . mysqli_connect_error()); 
+		} 
+			$sql = "DELETE FROM CentralDatabase WHERE email='$email'"; 
+			if(mysqli_query($link, $sql)){ 
+			}  
+			else{ 
+				echo "ERROR: Could not able to execute $sql. "  
+                . mysqli_error($link); 
+						} 
+				mysqli_close($link); 
+	 }
+	 $stmt = $conn->prepare($SELECT);
+     $stmt->bind_param("s", $email);
+     $stmt->execute();
+     $stmt->bind_result($email);
+	 $stmt->store_result();
+     $rnum = $stmt->num_rows;
      if ($rnum==0) {
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
