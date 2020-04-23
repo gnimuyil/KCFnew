@@ -8,10 +8,9 @@ $result=mysqli_query($con, "select * from users where user_id='$session_id'")or 
 $row=mysqli_fetch_array($result);
 $email=$row['email'];
 /* Getting entry date from CentralDatabase */
-$query1 		= mysqli_query($con, "SELECT * FROM CentralDatabase WHERE email='$email'");
-$row1		= mysqli_fetch_array($query1);
-$num_row1 	= mysqli_num_rows($queryreg);
-if(num_row1>0)
+$query1 = mysqli_query($con, "SELECT * FROM CentralDatabase WHERE email='$email'");
+$row1 = mysqli_fetch_array($query1);
+if($row1['CurrentDate'] > 0)
 {
 $stamp1=$row1['CurrentDate']; 
 /* Preparing timestamps for finding difference */
@@ -22,10 +21,12 @@ $ts11 = strtotime($today1);
 $ts22 = strtotime($end1);      
 $seconds_diff1 = $ts22 - $ts11;                            
 $time1 = round(($seconds_diff1/(3600*24)));
+echo $email;
 if($time1>0)
 {
 	    header('location:timer.php');
-} }
+} 
+}
 ?>
 
 <html>
