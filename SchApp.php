@@ -177,10 +177,103 @@ if($time1>0)
 	.reminder a:hover {
 	  color: #cab6bf;
 	}
+	
+	.error {color: #FF0000;}
 </style>
 </head>
 <body>
- <form action="insertTest.php" method="POST">
+
+<?php
+$email=$row['email'];
+$Phone = $Zip = $Last4SSN = $First = $Last = $Streetad1 = $Streetad2 = $Gender = $City = $State = $Birthdate = $PayPlan = $Goals = $FinCircumstances = $ExtraInfo = $GoalSchool = $AdminStatus = $AnticipProg = $ProgCost = $StartDate = $FirstPayDate = $CurrentDate = $PrevEdType = $PrevEdName = $PrevEdDegreeAtt = $PrevEdGradDate = $ApplicantSignature = $ParentGuardianSignature = "";
+$PhoneErr = $ZipErr = $Last4SSNErr = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	$valid = true;
+	
+		 if(!preg_match('/^[0-9]{10}$/', $_POST['Phone']))
+		{
+			$PhoneErr = "Invalid phone number!";
+			$valid = false;
+		}
+		else {
+	  $Phone = test_input($_POST["Phone"]);
+	  $valid=true;
+	  }
+    
+
+  
+ 
+if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
+		{
+			$ZipErr = "Invalid Zipcode!";
+			$valid = false;
+		}
+		else {
+	  $Zip = test_input($_POST["Zip"]);
+	  $valid=true;
+	  }
+
+ if(!preg_match('/^[0-9]{4}$/', $_POST['Last4SSN']))
+	{
+		$Last4SSNErr = "Invalid format!";
+		$valid = false;
+	}
+	else {
+	  $Last4SSN = test_input($_POST["Last4SSN"]);
+	  $valid=true;
+	}
+    
+	$First = test_input($_POST["First"]);
+	$Last = test_input($_POST["Last"]);
+	$Streetad1 = test_input($_POST["Streetad1"]);
+	$Streetad2 = test_input($_POST["Streetad2"]);
+	$City = test_input($_POST["City"]);
+	$State = test_input($_POST["State"]);
+	$Gender = $_POST["Gender"];
+	$Birthdate = test_input($_POST["Birthdate"]);
+	$PayPlan = test_input($_POST["PayPlan"]);
+	$Goals = test_input($_POST["Goals"]);
+	$FinCircumstances = test_input($_POST["FinCircumstances"]);
+	$ExtraInfo = test_input($_POST["ExtraInfo"]);
+	$GoalSchool = test_input($_POST["GoalSchool"]);
+	$AdminStatus = test_input($_POST["AdminStatus"]);
+	$AnticipProg = $_POST["AnticipProg"];
+	$ProgCost = test_input($_POST["ProgCost"]);
+	$StartDate = test_input($_POST["StartDate"]);
+	$FirstPayDate = test_input($_POST["FirstPayDate"]);
+	$CurrentDate = test_input($_POST["CurrentDate"]);
+	$PrevEdType = $_POST["PrevEdType"];
+	$PrevEdName = test_input($_POST["PrevEdName"]);
+	$PrevEdDegreeAtt = test_input($_POST["PrevEdDegreeAtt"]);
+	$PrevEdGradDate = test_input($_POST["PrevEdGradDate"]);
+	$ApplicantSignature = test_input($_POST["ApplicantSignature"]);
+	$ParentGuardianSignature = test_input($_POST["ParentGuardianSignature"]);
+	
+ 
+  if($valid){ 
+       include  'insertTest.php';
+       echo '<META HTTP-EQUIV="Refresh" Content="0; URL=insertTest.php">'; 
+       exit;       
+  } 
+  
+  
+	
+}
+
+
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+?>
+
+
+ <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 	<div class="form-wrapper">
 		
 		<h3>Knox County Vocational Scholarship Application</h3>
@@ -214,53 +307,55 @@ if($time1>0)
 		<br>
 		<div class="form-item">
 			<label for="First">* First name:</label>
-			<input type="text" name="First" required="required" autofocus required></input>
+			<input type="text" name="First" required="required" value="<?php echo $First;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="Last">* Last name:</label>
-			<input type="text" name="Last" required="required" autofocus required></input>
+			<input type="text" name="Last" required="required" value="<?php echo $Last;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="Streetad1">* Street Address:</label>
-			<input type="text" name="Streetad1" required="required" autofocus required></input>
+			<input type="text" name="Streetad1" required="required" value="<?php echo $Streetad1;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="Streetad2">  Street Address Line 2:</label>
-			<input type="text" name="Streetad2" autofocus></input>
+			<input type="text" name="Streetad2" value="<?php echo $Streetad2;?>" autofocus></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="City">* City:</label>
-			<input type="text" name="City" required="required" autofocus required></input>
+			<input type="text" name="City" required="required" value="<?php echo $City;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="State">* State/ Province:</label>
-			<input type="text" name="State" required="required" autofocus required></input>
+			<input type="text" name="State" required="required" value="<?php echo $State;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="Zip">* Postal/ Zip Code:</label>
-			<input type="number" name="Zip" required="required" autofocus required></input>
+			<input type="number" name="Zip" required="required" value="<?php echo $Zip;?>" autofocus required></input>
+			<span class="error"> <?php echo $ZipErr;?></span>
 		</div>
 		
 		<div class="form-item">
 			<label for="Phone">* Phone:</label>
-			<input type="number" name="Phone" required="required" autofocus required></input>
+			<input type="number" name="Phone" required="required" placeholder="XXXXXXXXXX" value="<?php echo $Phone;?>" autofocus required></input>
+			<span class="error"> <?php echo $PhoneErr;?></span>
 		</div>
 		
 		<div class="form-item">
 			<label for="Birthdate">* Date of Birth:</label>
-			<input type="date" name="Birthdate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" autofocus required></input>
+			<input type="date" name="Birthdate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" value="<?php echo $Birthdate;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="Gender">  Gender (Optional):</label>
 			<select name="Gender" autofocus>
-				<option selected hidden value="">
+				<option selected hidden value="<?php echo $Gender;?>">
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
 			</select>
@@ -268,7 +363,8 @@ if($time1>0)
 		
 		<div class="form-item">
 			<label for="Last4SSN">* Last 4 Digits of SSN:</label>
-			<input type="number" name="Last4SSN" required="required" autofocus required></input>
+			<input type="number" name="Last4SSN" required="required" value="<?php echo $Last4SSN;?>" autofocus required></input>
+			<span class="error"> <?php echo $Last4SSNErr;?></span>
 		</div>
 		
 		<br>
@@ -280,7 +376,7 @@ if($time1>0)
 		<div class="form-item">
 			<label for="PrevEdType">* Education Type:</label>
 			<select name="PrevEdType" required="required" autofocus required>
-				<option selected hidden value="">
+				<option selected hidden value="<?php echo $PrevEdType;?>" >
 				<option value="HighSchool">High School</option>
 				<option value="Associate">Associate</option>
 				<option value="Bachelors">Bachelors</option>
@@ -291,16 +387,16 @@ if($time1>0)
 		
 		<div class="form-item">
 			<label for="PrevEdName">* Name of Institution:</label>
-			<input type="text" name="PrevEdName" required="required" autofocus required></input>
+			<input type="text" name="PrevEdName" required="required" value="<?php echo $PrevEdName;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="PrevEdDegreeAtt">* Degree Attained:</label>
-			<input type="text" name="PrevEdDegreeAtt" required="required" autofocus required></input>
+			<input type="text" name="PrevEdDegreeAtt" required="required" value="<?php echo $PrevEdDegreeAtt;?>" autofocus required></input>
 		</div>
 		<div class="form-item">
 			<label for="PrevEdGradDate">* Completion/ Grad Date:</label>
-			<input type="date" name="PrevEdGradDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" autofocus required></input>
+			<input type="date" name="PrevEdGradDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" value="<?php echo $PrevEdGradDate;?>" autofocus required></input>
 		</div>
 		
 		<br>
@@ -310,39 +406,39 @@ if($time1>0)
 		<br>
 		<div class="form-item">
 			<label for="GoalSchool">* College/ School:</label>
-			<input type="text" name="GoalSchool" required="required" autofocus required></input>
+			<input type="text" name="GoalSchool" required="required" value="<?php echo $GoalSchool;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 		<label for="AdminStatus">* Admission Status:</label>
 		</div>
 		
-		<div class="form-radio">
+		<div class="form-radio" value="<?php echo $AdminStatus;?>" >
 			<input type="radio" name="AdminStatus" value="Applied" required> Applied	
 			<input type="radio" name="AdminStatus" value="Accepted" required> Accepted
 			<input type="radio" name="AdminStatus" value="Wait List" required> Wait List
 			<input type="radio" name="AdminStatus" value="Plan to Apply" required> Plan to Apply
-			
+			<input type="radio" name="AdminStatus" value="Currently Attending" required> Currently Attending
 		</div>
 		
 		<div class="form-item">
 			<label for="AnticipProg">* Anticipated Program:</label>
-			<input type="text" name="AnticipProg" required="required" autofocus required></input>
+			<input type="text" name="AnticipProg" required="required" value="<?php echo $AnticipProg;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="ProgCost">* Cost of Program (may attach cost breakdown if provided):</label>
-			<input type="number" name="ProgCost" required="required" autofocus required></input>
+			<input type="number" name="ProgCost" required="required" value="<?php echo $ProgCost;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="StartDate">* Anticipated Start Date:</label>
-			<input type="date" name="StartDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" autofocus required></input>
+			<input type="date" name="StartDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" value="<?php echo $StartDate;?>" required="required" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
 			<label for="FirstPayDate">* First Payment Due Date:</label>
-			<input type="date" name="FirstPayDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" autofocus required></input>
+			<input type="date" name="FirstPayDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" value="<?php echo $FirstPayDate;?>" autofocus required></input>
 		</div>
 	
 	 <br>
@@ -353,22 +449,22 @@ if($time1>0)
 		<br>
 		<div class="form-item">
 			<label for="PayPlan">* How do you plan to pay for your education? (List grants, savings, loans, working, etc.):</label>
-			<textarea id="PayPlan" name="PayPlan" required="required" autofocus required></textarea>
+			<textarea id="PayPlan" name="PayPlan" required="required" value="<?php echo $PayPlan;?>" autofocus required></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="Goals">* What are your goals in the next 5-10 years? What do you hope to do upon completion of your program? (For example, where do you hope to live and work?): </label>
-			<textarea id="Goals" name="Goals" required="required" autofocus required></textarea>
+			<textarea id="Goals" name="Goals" required="required" value="<?php echo $Goals;?>" autofocus required></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="FinCircumstances">* Please explain any financial circumstances that were not addressed on the FAFSA. Why do you need this scholarship and how would receiving it impact the achievement of your goals? </label>
-			<textarea id="FinCircumstances" name="FinCircumstances" required="required" autofocus required></textarea>
+			<textarea id="FinCircumstances" name="FinCircumstances" required="required" value="<?php echo $FinCircumstances;?>" autofocus required></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="ExtraInfo">Is there any additional information you consider supportive of your application for scholarship assistance from the Knox County Foundation?</label>
-			<textarea id="ExtraInfo" name="ExtraInfo" autofocus></textarea>
+			<textarea id="ExtraInfo" name="ExtraInfo" value="<?php echo $ExtraInfo;?>" autofocus></textarea>
 		</div>
 		
 		<hr>
@@ -400,13 +496,13 @@ the Knox County Foundation. </span></p>
 		</div>
 		
 		<div class="form-item">
-			<label for="ApplicantSignature">* Applicant Signature:</label>
-			<input type="text" name="ApplicantSignature" required="required" autofocus required></input>
+			<label for="ApplicantSignature">* Digital Applicant Signature:</label>
+			<input type="text" name="ApplicantSignature" required="required" value="<?php echo $ApplicantSignature;?>" autofocus required></input>
 		</div>
 		
 		<div class="form-item">
-			<label for="ParentGuardianSignature">Parent/Guardian Signature (if under 18):</label>
-			<input type="text" name="ParentGuardianSignature" autofocus ></input>
+			<label for="ParentGuardianSignature">Digital Parent/Guardian Signature (if under 18):</label>
+			<input type="text" name="ParentGuardianSignature" value="<?php echo $ParentGuardianSignature;?>" autofocus ></input>
 		</div>
 		
 		<div class="button-panel">

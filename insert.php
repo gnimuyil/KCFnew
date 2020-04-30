@@ -17,17 +17,7 @@ $email = $_POST['email'];
 $token = bin2hex(random_bytes(50));
 $pswrepeat = $_POST['pswrepeat'];
 
-$uppercase = preg_match('@[A-Z]@', $password);
-$lowercase = preg_match('@[a-z]@', $password);
-$number    = preg_match('@[0-9]@', $password);
-$specialChars = preg_match('@[^\w]@', $password);
-
-if($password != $pswrepeat) echo '<script>alert("Passwords did not match! Try again.")</script>'; 
-else if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) 
-{
-  echo '<script>alert("Password should be at least 8 characters in length and should include at least one upper case letter, one number, and one special character.")</script>'; 
-}
-else if (!empty($password) || !empty($email) || !empty($pswrepeat)) 
+if (!empty($password) || !empty($email) || !empty($pswrepeat)) 
 {
  $host = "localhost";
  $dbUsername = "baitan1";
@@ -85,6 +75,7 @@ else if (!empty($password) || !empty($email) || !empty($pswrepeat))
     $stmt = $conn->prepare($INSERT);
     $stmt->bind_param("sss", $password, $email, $token);
     $stmt->execute();
+	die();
    }
    else
    {
@@ -102,9 +93,4 @@ else if (!empty($password) || !empty($email) || !empty($pswrepeat))
   $conn->close();
  }
 } 
-else 
-{
- echo "All field are required";
- die();
-}
 ?>
