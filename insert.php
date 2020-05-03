@@ -1,3 +1,10 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="form-wrapper"> 
+    <center><h3> </h3></center>
 <?php
 
 	use PHPMailer\PHPMailer\PHPMailer;
@@ -94,3 +101,7 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
  }
 } 
 ?>
+</div>
+
+</body>
+</html>
