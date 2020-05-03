@@ -1,4 +1,11 @@
-<?php 
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="form-wrapper"> 
+    <center><h3> </h3></center>
+<?php
 include('dbcon.php');
 include('session.php'); 
 
@@ -252,3 +259,7 @@ if (!empty($email) || !empty($Phone)||
  die();
 }
 ?>
+</div>
+
+</body>
+</html>
