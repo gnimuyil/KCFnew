@@ -1,3 +1,10 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="form-wrapper"> 
+    <center><h3> </h3></center>
 <?php
 session_start();
 
@@ -45,3 +52,7 @@ else
 {
     echo "No token provided!";
 }
+</div>
+
+</body>
+</html>
