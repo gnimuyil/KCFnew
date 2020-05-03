@@ -253,7 +253,6 @@ if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
  
   if($valid){ 
        include  'insertTest.php';
-       echo '<META HTTP-EQUIV="Refresh" Content="0; URL=insertTest.php">'; 
        exit;       
   } 
   
