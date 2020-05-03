@@ -1,3 +1,5 @@
+
+session_start();
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -6,8 +8,6 @@
 <div class="form-wrapper"> 
     <center><h3> </h3></center>
 <?php
-session_start();
-
 $host = "localhost";
 $dbUsername = "baitan1";
 $dbPassword = "S216242";
