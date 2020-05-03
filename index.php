@@ -61,7 +61,7 @@
   <br>
   
   <div class="reminder">
-    <p>Not a member? <a href="/class/ssd/li2/ResponsiveRegistration.html">Sign up now</a></p>
+    <p>Not a member? <a href="ResponsiveRegistration.html">Sign up now</a></p>
 		  </div>
 
   
