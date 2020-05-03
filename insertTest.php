@@ -116,7 +116,7 @@ if (!empty($email) || !empty($Phone)||
 	  $PayPlan, $Goals, $FinCircumstances, $ExtraInfo, $GoalSchool, $AdminStatus, $AnticipProg,
       $ProgCost, $StartDate, $FirstPayDate, $CurrentDate, $PrevEdType, $PrevEdName, $PrevEdDegreeAtt, $PrevEdGradDate, $ApplicantSignature, $ParentGuardianSignature);
       $stmt->execute();
-      echo "New record inserted sucessfully.";
+      echo "You applicaiton has been submitted!.";
      
 	 
 	  $mail_body = '
