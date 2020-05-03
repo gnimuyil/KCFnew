@@ -193,7 +193,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 		 if(!preg_match('/^[0-9]{10}$/', $_POST['Phone']))
 		{
-			$PhoneErr = "Invalid phone number!";
+			$PhoneErr = "Please use the valid format: XXXXXXXXXX";
 			$valid = false;
 		}
 		else {
@@ -206,7 +206,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  
 if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 		{
-			$ZipErr = "Invalid Zipcode!";
+			$ZipErr = "Please enter a 5 digit Zip code";
 			$valid = false;
 		}
 		else {
@@ -216,7 +216,7 @@ if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 
  if(!preg_match('/^[0-9]{4}$/', $_POST['Last4SSN']))
 	{
-		$Last4SSNErr = "Invalid format!";
+		$Last4SSNErr = "Please enter a 4 digit number";
 		$valid = false;
 	}
 	else {
@@ -230,22 +230,22 @@ if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 	$Streetad2 = test_input($_POST["Streetad2"]);
 	$City = test_input($_POST["City"]);
 	$State = test_input($_POST["State"]);
-	$Gender = $_POST["Gender"];
+	$Gender = $_REQUEST["Gender"];
 	$Birthdate = test_input($_POST["Birthdate"]);
-	$PayPlan = test_input($_POST["PayPlan"]);
-	$Goals = test_input($_POST["Goals"]);
-	$FinCircumstances = test_input($_POST["FinCircumstances"]);
-	$ExtraInfo = test_input($_POST["ExtraInfo"]);
+	$PayPlan = $_REQUEST["PayPlan"];
+	$Goals = $_REQUEST["Goals"];
+	$FinCircumstances = $_REQUEST["FinCircumstances"];
+	$ExtraInfo = $_REQUEST["ExtraInfo"];
 	$GoalSchool = test_input($_POST["GoalSchool"]);
-	$AdminStatus = test_input($_POST["AdminStatus"]);
-	$AnticipProg = $_POST["AnticipProg"];
+	$AdminStatus = $_REQUEST["AdminStatus"];
+	$AnticipProg = test_input($_POST["AnticipProg"]);
 	$ProgCost = test_input($_POST["ProgCost"]);
 	$StartDate = test_input($_POST["StartDate"]);
 	$FirstPayDate = test_input($_POST["FirstPayDate"]);
 	$CurrentDate = test_input($_POST["CurrentDate"]);
 	$PrevEdType = $_POST["PrevEdType"];
 	$PrevEdName = test_input($_POST["PrevEdName"]);
-	$PrevEdDegreeAtt = test_input($_POST["PrevEdDegreeAtt"]);
+	$PrevEdDegreeAtt = $_REQUEST["PrevEdDegreeAtt"];
 	$PrevEdGradDate = test_input($_POST["PrevEdGradDate"]);
 	$ApplicantSignature = test_input($_POST["ApplicantSignature"]);
 	$ParentGuardianSignature = test_input($_POST["ParentGuardianSignature"]);
@@ -272,7 +272,7 @@ function test_input($data) {
 ?>
 
 
- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
+ <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" autocomplete="on">
 	<div class="form-wrapper">
 		
 		<h3>Knox County Vocational Scholarship Application</h3>
@@ -354,7 +354,7 @@ function test_input($data) {
 		<div class="form-item">
 			<label for="Gender">  Gender (Optional):</label>
 			<select name="Gender" autofocus>
-				<option selected hidden value="<?php echo $Gender;?>">
+				<option selected value=<?php echo $Gender;?>><?php echo $Gender;?></option>
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
 			</select>
@@ -375,8 +375,8 @@ function test_input($data) {
 		<div class="form-item">
 			<label for="PrevEdType">* Education Type:</label>
 			<select name="PrevEdType" required="required" autofocus required>
-				<option selected hidden value="<?php echo $PrevEdType;?>" >
-				<option value="HighSchool">High School</option>
+				<option selected value=<?php echo $PrevEdType;?>><?php echo $PrevEdType;?></option>
+				<option value="High School">High School</option>
 				<option value="Associate">Associate</option>
 				<option value="Bachelors">Bachelors</option>
 				<option value="Masters">Masters</option>
@@ -410,16 +410,16 @@ function test_input($data) {
 		
 		<div class="form-item">
 		<label for="AdminStatus">* Admission Status:</label>
+			<select name="AdminStatus" required="required" autofocus required>
+				<option selected value=<?php echo $AdminStatus;?>><?php echo $AdminStatus;?></option>
+				<option value="Applied">Applied</option>
+				<option value="Accepted">Accepted</option>
+				<option value="Wait List">Wait List</option>
+				<option value="Plan to Apply">Plan to Apply</option>
+				<option value="Currently Attending">Currently Attending</option>
+			</select>
 		</div>
-		
-		<div class="form-radio" value="<?php echo $AdminStatus;?>" >
-			<input type="radio" name="AdminStatus" value="Applied" required> Applied	
-			<input type="radio" name="AdminStatus" value="Accepted" required> Accepted
-			<input type="radio" name="AdminStatus" value="Wait List" required> Wait List
-			<input type="radio" name="AdminStatus" value="Plan to Apply" required> Plan to Apply
-			<input type="radio" name="AdminStatus" value="Currently Attending" required> Currently Attending
-		</div>
-		
+			
 		<div class="form-item">
 			<label for="AnticipProg">* Anticipated Program:</label>
 			<input type="text" name="AnticipProg" required="required" value="<?php echo $AnticipProg;?>" autofocus required></input>
@@ -448,22 +448,22 @@ function test_input($data) {
 		<br>
 		<div class="form-item">
 			<label for="PayPlan">* How do you plan to pay for your education? (List grants, savings, loans, working, etc.):</label>
-			<textarea id="PayPlan" name="PayPlan" required="required" value="<?php echo $PayPlan;?>" autofocus required></textarea>
+			<textarea id="PayPlan" name="PayPlan" required="required" value="<?php echo $PayPlan;?>" autofocus required><?php echo $PayPlan;?></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="Goals">* What are your goals in the next 5-10 years? What do you hope to do upon completion of your program? (For example, where do you hope to live and work?): </label>
-			<textarea id="Goals" name="Goals" required="required" value="<?php echo $Goals;?>" autofocus required></textarea>
+			<textarea id="Goals" name="Goals" required="required" value="<?php echo $Goals;?>" autofocus required><?php echo $Goals;?></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="FinCircumstances">* Please explain any financial circumstances that were not addressed on the FAFSA. Why do you need this scholarship and how would receiving it impact the achievement of your goals? </label>
-			<textarea id="FinCircumstances" name="FinCircumstances" required="required" value="<?php echo $FinCircumstances;?>" autofocus required></textarea>
+			<textarea id="FinCircumstances" name="FinCircumstances" required="required" value="<?php echo $FinCircumstances;?>" autofocus required><?php echo $FinCircumstances;?></textarea>
 		</div>
 		
 		<div class="form-item">
 			<label for="ExtraInfo">Is there any additional information you consider supportive of your application for scholarship assistance from the Knox County Foundation?</label>
-			<textarea id="ExtraInfo" name="ExtraInfo" value="<?php echo $ExtraInfo;?>" autofocus></textarea>
+			<textarea id="ExtraInfo" name="ExtraInfo" value="<?php echo $ExtraInfo;?>" autofocus><?php echo $ExtraInfo;?></textarea>
 		</div>
 		
 		<hr>
@@ -490,8 +490,13 @@ both my enrollment and completion of orientation (if applicable) before funds ar
 I will also allow my accredited school to disclose my completion, licensure, and workforce placement information to
 the Knox County Foundation. </span></p>
 
-		<div class="form-radio">
-			<input type="radio" name="Agreement" value="Agree" required> Agree	
+
+		<div class="form-item">
+		<label for="Agreement">* Do you agree to the terms and conditions?</label>
+			<select name="Agreement" required="required" autofocus required>
+				<option selected value=<?php echo $Agreement;?>><?php echo $Agreement;?></option>
+				<option value="Yes">Yes</option>
+			</select>
 		</div>
 		
 		<div class="form-item">
