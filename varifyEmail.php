@@ -35,7 +35,7 @@ if (isset($_GET['token']))
             $_SESSION['message'] = "Your email address has been verified successfully";
             $_SESSION['type'] = 'alert-success';
             echo "Your have been verified. Click "; 
-			echo '<a href="https://cslab.kenyon.edu/class/ssd/li2/">here</a>';
+			echo '<a href="https://cslab.kenyon.edu/class/ssd/lobo1/NewestFolder/KCFnew/">here</a>';
 			echo  " to log in.";
 			
 			
@@ -51,6 +51,7 @@ else
 {
     echo "No token provided!";
 }
+?>
 </div>
 
 </body>

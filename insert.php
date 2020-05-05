@@ -55,7 +55,7 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    $mail_body = "
    <p>Hi ,</p>
    <p>Thanks for Registration. <p>
-   <p>Please Open this link to verified your email address - https://cslab.kenyon.edu/class/ssd/li2/varifyEmail.php?token=" .$token. "<p>
+   <p>Please Open this link to verified your email address - https://cslab.kenyon.edu/class/ssd/lobo1/NewestFolder/KCFnew/varifyEmail.php?token=" .$token. "<p>
    <p>Best Regards,<br />Knox County Foundation</p>
    ";
    
