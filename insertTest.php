@@ -52,11 +52,13 @@ $StartDate = $_POST['StartDate'];
 $FirstPayDate = $_POST['FirstPayDate'];
 $CurrentDate = $_POST['CurrentDate'];
 $PrevEdType = $_POST['PrevEdType'];
-
+$PrevEdType2 = $_POST['PrevEdType2'];
 $PrevEdName = $_POST['PrevEdName'];
-
+$PrevEdName2 = $_POST['PrevEdName2'];
 $PrevEdDegreeAtt = $_POST['PrevEdDegreeAtt'];
+$PrevEdDegreeAtt2 = $_POST['PrevEdDegreeAtt2'];
 $PrevEdGradDate = $_POST['PrevEdGradDate'];
+$PrevEdGradDate2 = $_POST['PrevEdGradDate2'];
 $ApplicantSignature = $_POST['ApplicantSignature'];
 $ParentGuardianSignature = $_POST['ParentGuardianSignature'];
 
@@ -79,7 +81,7 @@ if (!empty($email) || !empty($Phone)||
      $SELECT = "SELECT email From CentralDatabase Where email = ? Limit 1";
      $INSERT = "INSERT Into CentralDatabase (First, Last, Streetad1, Streetad2, City, State, Zip, Phone, email, Birthdate, Gender, Last4SSN, 
 	 PayPlan, Goals, FinCircumstances, ExtraInfo, GoalSchool, AdminStatus, AnticipProg,
-     ProgCost, StartDate, FirstPayDate, CurrentDate, PrevEdType, PrevEdName, PrevEdDegreeAtt, PrevEdGradDate, ApplicantSignature, ParentGuardianSignature) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     ProgCost, StartDate, FirstPayDate, CurrentDate, PrevEdType, PrevEdName, PrevEdDegreeAtt, PrevEdGradDate, ApplicantSignature, ParentGuardianSignature, PrevEdType2, PrevEdName2, PrevEdDegreeAtt2, PrevEdGradDate2) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
      $stmt->bind_param("s", $email);
@@ -112,9 +114,9 @@ if (!empty($email) || !empty($Phone)||
      if ($rnum==0) {
       $stmt->close();
       $stmt = $conn->prepare($INSERT);
-      $stmt->bind_param("ssssssiisssisssssssisssssssss", $First, $Last, $Streetad1, $Streetad2, $City, $State, $Zip, $Phone, $email, $Birthdate, $Gender, $Last4SSN, 
+      $stmt->bind_param("ssssssiisssisssssssisssssssssssss", $First, $Last, $Streetad1, $Streetad2, $City, $State, $Zip, $Phone, $email, $Birthdate, $Gender, $Last4SSN, 
 	  $PayPlan, $Goals, $FinCircumstances, $ExtraInfo, $GoalSchool, $AdminStatus, $AnticipProg,
-      $ProgCost, $StartDate, $FirstPayDate, $CurrentDate, $PrevEdType, $PrevEdName, $PrevEdDegreeAtt, $PrevEdGradDate, $ApplicantSignature, $ParentGuardianSignature);
+      $ProgCost, $StartDate, $FirstPayDate, $CurrentDate, $PrevEdType, $PrevEdName, $PrevEdDegreeAtt, $PrevEdGradDate, $ApplicantSignature, $ParentGuardianSignature, $PrevEdType2, $PrevEdName2, $PrevEdDegreeAtt2, $PrevEdGradDate2);
       $stmt->execute();
       echo "You applicaiton has been submitted!.";
      
@@ -177,6 +179,22 @@ if (!empty($email) || !empty($Phone)||
    <tr>
     <td width="30%">Completion/Grad Date</td>
     <td width="70%">'.$PrevEdGradDate.'</td>
+   </tr>
+   <tr>
+    <td width="30%">Education Type</td>
+    <td width="70%">'.$PrevEdType2.'</td>
+   </tr>
+   <tr>
+    <td width="30%">Name of Institution</td>
+    <td width="70%">'.$PrevEdName2.'</td>
+   </tr>
+    <tr>
+    <td width="30%">Degree Attained</td>
+    <td width="70%">'.$PrevEdDegreeAtt2.'</td>
+   </tr>
+   <tr>
+    <td width="30%">Completion/Grad Date</td>
+    <td width="70%">'.$PrevEdGradDate2.'</td>
    </tr>
    <tr> 
     <td width="30%">College/School</td>

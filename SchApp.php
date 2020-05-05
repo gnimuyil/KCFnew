@@ -185,7 +185,7 @@ if($time1>0)
 
 <?php
 $email=$row['email'];
-$Phone = $Zip = $Last4SSN = $First = $Last = $Streetad1 = $Streetad2 = $Gender = $City = $State = $Birthdate = $PayPlan = $Goals = $FinCircumstances = $ExtraInfo = $GoalSchool = $AdminStatus = $AnticipProg = $ProgCost = $StartDate = $FirstPayDate = $CurrentDate = $PrevEdType = $PrevEdName = $PrevEdDegreeAtt = $PrevEdGradDate = $ApplicantSignature = $ParentGuardianSignature = "";
+$Phone = $Zip = $Last4SSN = $First = $Last = $Streetad1 = $Streetad2 = $Gender = $City = $State = $Birthdate = $PayPlan = $Goals = $FinCircumstances = $ExtraInfo = $GoalSchool = $AdminStatus = $AnticipProg = $ProgCost = $StartDate = $FirstPayDate = $CurrentDate = $PrevEdType = $PrevEdType2 = $PrevEdName = $PrevEdName2 = $PrevEdDegreeAtt = $PrevEdDegreeAtt2 = $PrevEdGradDate = $PrevEdGradDate2 = $ApplicantSignature = $ParentGuardianSignature = "";
 $PhoneErr = $ZipErr = $Last4SSNErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -244,9 +244,13 @@ if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 	$FirstPayDate = test_input($_POST["FirstPayDate"]);
 	$CurrentDate = test_input($_POST["CurrentDate"]);
 	$PrevEdType = $_POST["PrevEdType"];
+	$PrevEdType2 = $_POST["PrevEdType2"];
 	$PrevEdName = test_input($_POST["PrevEdName"]);
+	$PrevEdName2 = test_input($_POST["PrevEdName2"]);
 	$PrevEdDegreeAtt = $_REQUEST["PrevEdDegreeAtt"];
+	$PrevEdDegreeAtt2 = $_REQUEST["PrevEdDegreeAtt2"];
 	$PrevEdGradDate = test_input($_POST["PrevEdGradDate"]);
+	$PrevEdGradDate2 = test_input($_POST["PrevEdGradDate2"]);
 	$ApplicantSignature = test_input($_POST["ApplicantSignature"]);
 	$ParentGuardianSignature = test_input($_POST["ParentGuardianSignature"]);
 	
@@ -396,6 +400,36 @@ function test_input($data) {
 		<div class="form-item">
 			<label for="PrevEdGradDate">* Completion/ Grad Date:</label>
 			<input type="date" name="PrevEdGradDate" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" required="required" value="<?php echo $PrevEdGradDate;?>" autofocus required></input>
+		</div>
+		
+		<br>
+		<br> 
+		<p style="text-align: center;"><strong>Optional Extra Education<br /></strong></p>
+		
+		<div class="form-item">
+			<label for="PrevEdType2">  Education Type:</label>
+			<select name="PrevEdType2" autofocus>
+				<option selected value=<?php echo $PrevEdType2;?>><?php echo $PrevEdType2;?></option>
+				<option value="High School">High School</option>
+				<option value="Associate">Associate</option>
+				<option value="Bachelors">Bachelors</option>
+				<option value="Masters">Masters</option>
+				<option value="Other">Other</option>
+			</select>
+		</div>
+		
+		<div class="form-item">
+			<label for="PrevEdName2">  Name of Institution:</label>
+			<input type="text" name="PrevEdName2" value="<?php echo $PrevEdName2;?>" autofocus></input>
+		</div>
+		
+		<div class="form-item">
+			<label for="PrevEdDegreeAtt2">  Degree Attained:</label>
+			<input type="text" name="PrevEdDegreeAtt2" value="<?php echo $PrevEdDegreeAtt2;?>" autofocus></input>
+		</div>
+		<div class="form-item">
+			<label for="PrevEdGradDate2">  Completion/ Grad Date:</label>
+			<input type="date" name="PrevEdGradDate2" placeholder="yyyy-mm-dd" pattern="\d{4}-\d{1,2}-\d{1,2}" value="<?php echo $PrevEdGradDate2;?>" autofocus ></input>
 		</div>
 		
 		<br>
