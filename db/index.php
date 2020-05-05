@@ -9,12 +9,9 @@
 <body>
     <div class="container">
     		<div class="row">
-    			<h3>PHP CRUD Grid</h3>
+    			<h3>KCF Scholarship Database</h3>
     		</div>
 			<div class="row">
-				<p>
-					<a href="create.php" class="btn btn-success">Create</a>
-				</p>
 				
 				<table class="table table-striped table-bordered">
 		              <thead>
