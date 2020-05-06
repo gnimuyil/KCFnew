@@ -17,7 +17,16 @@ include('session.php');
 
 $result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
 $row=mysqli_fetch_array($result);
-
+$email=$row['email'];
+/* Getting entry date from CentralDatabase */
+$query = mysqli_query($con, "SELECT * FROM CentralDatabase WHERE email='$email'");
+$num_row=mysqli_num_rows($query);
+if($num_row==0)
+{
+	  header('location:Error.php');
+}  
+			
+		
  ?>
 
 
@@ -183,8 +192,8 @@ $row=mysqli_fetch_array($result);
 		
 	<form method ="post" enctype="multipart/form-data">
 	<div class="form-wrapper">
-	<h3>Document Submition</h3>
-	<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>In order to be elligable for the Knox County Fundation Vocational Scholarship, the follwing documents are required:</strong></span></p>
+	<h3>Document Submission</h3>
+	<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>In order to be eligible for the Knox County Fundation Vocational Scholarship, the following documents are required:</strong></span></p>
 	<ul>
 			<li style="text-align: left;">
 			High School Transcript or GED
@@ -217,19 +226,22 @@ $row=mysqli_fetch_array($result);
 </html>
 		
 <?php 
+$result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
+$row=mysqli_fetch_array($result);
+$email=$row['email'];
+
 $localhost = "localhost"; #localhost
 $dbusername = "lobo1"; #username of phpmyadmin
 $dbpassword = "S217115";  #password of phpmyadmin
 $dbname = "CommunityScholarship";  #database name
 $conn = mysqli_connect($localhost,$dbusername,$dbpassword,$dbname);
+
 if (mysqli_connect_error())		
 {
 	die('Connect Error('. mysqli_connect_errno().')'. mysqli_connect_error());
 	echo "Connect Error";
 } 		
 
-$email=$row['email'];	
-	
 
 if (isset($_POST["btn"]))
 {
@@ -256,12 +268,12 @@ if (isset($_POST["btn"]))
 		if (mysqli_query($conn, $Tsql) && mysqli_query($conn, $Rsql) && mysqli_query($conn, $Fsql)) 
 		{
 			echo "Files uploaded successfully. Click ";
-			echo '<a href="https://cslab.kenyon.edu/class/ssd/li2/home.php">here</a>';
+			echo '<a href="home.php">here</a>';
 			echo  " to go back to home page.";
 		} 
 		else 
 		{
-			echo "Files failed to upload.<br />";
+			echo "Files failed to upload. Please make sure that your files are under 2 mb<br />";
 		}			
 	}
 	else
