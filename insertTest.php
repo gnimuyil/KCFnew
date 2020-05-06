@@ -81,7 +81,7 @@ if (!empty($email) || !empty($Phone)||
      $SELECT = "SELECT email From CentralDatabase Where email = ? Limit 1";
      $INSERT = "INSERT Into CentralDatabase (First, Last, Streetad1, Streetad2, City, State, Zip, Phone, email, Birthdate, Gender, Last4SSN, 
 	 PayPlan, Goals, FinCircumstances, ExtraInfo, GoalSchool, AdminStatus, AnticipProg,
-     ProgCost, StartDate, FirstPayDate, CurrentDate, PrevEdType, PrevEdName, PrevEdDegreeAtt, PrevEdGradDate, ApplicantSignature, ParentGuardianSignature, PrevEdType2, PrevEdName2, PrevEdDegreeAtt2, PrevEdGradDate2) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+     ProgCost, StartDate, FirstPayDate, CurrentDate, PrevEdType, PrevEdName, PrevEdDegreeAtt, PrevEdGradDate, ApplicantSignature, ParentGuardianSignature, PrevEdType2, PrevEdName2, PrevEdDegreeAtt2, PrevEdGradDate2, Transcript, FAFSA, Aid, Edited) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0 ,0, 0)";
      //Prepare statement
      $stmt = $conn->prepare($SELECT);
      $stmt->bind_param("s", $email);
@@ -118,7 +118,7 @@ if (!empty($email) || !empty($Phone)||
 	  $PayPlan, $Goals, $FinCircumstances, $ExtraInfo, $GoalSchool, $AdminStatus, $AnticipProg,
       $ProgCost, $StartDate, $FirstPayDate, $CurrentDate, $PrevEdType, $PrevEdName, $PrevEdDegreeAtt, $PrevEdGradDate, $ApplicantSignature, $ParentGuardianSignature, $PrevEdType2, $PrevEdName2, $PrevEdDegreeAtt2, $PrevEdGradDate2);
       $stmt->execute();
-      echo "You applicaiton has been submitted!.";
+      echo "You applicaiton has been submitted!\n";
      
 	 
 	  $mail_body = '
@@ -244,10 +244,10 @@ if (!empty($email) || !empty($Phone)||
    $mail->Host = 'smtp.gmail.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
    $mail->Port = '587';        //Sets the default SMTP server port
    $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
-   $mail->Username = 'fatchickenforwork@gmail.com';     //Sets SMTP username
-   $mail->Password = '1a2b3c4d@@';     //Sets SMTP password
+   $mail->Username = 'Scholarship@knoxcf.org';     //Sets SMTP username
+   $mail->Password = 'Kenyon1824';     //Sets SMTP password
    $mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
-   $mail->From = 'fatchickenforwork@gmail.com';   //Sets the From email address for the message
+   $mail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
    $mail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
    $mail->AddAddress($email);  //Adds a "To" address   
    $mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
@@ -256,7 +256,12 @@ if (!empty($email) || !empty($Phone)||
    $mail->Body = $mail_body;       //An HTML or plain text message body
 		if($mail->Send())        //Send an Email. Return true on success or false on error
 		{
-			echo " Please check your email for a copy of your application";
+			echo "\n Please check your email for a copy of your application.";
+			
+			echo "\n\n Click "; 
+			echo '<a href="https://cslab.kenyon.edu/class/ssd/li2/home.php">here</a>';
+			echo  " to go back to home page for file submission.";
+		
 			
 		}
 		else

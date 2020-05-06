@@ -65,10 +65,10 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    $mail->Host = 'smtp.gmail.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
    $mail->Port = '587';        //Sets the default SMTP server port
    $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
-   $mail->Username = 'fatchickenforwork@gmail.com';     //Sets SMTP username
-   $mail->Password = '1a2b3c4d@@';     //Sets SMTP password
+   $mail->Username = 'Scholarship@knoxcf.org';     //Sets SMTP username
+   $mail->Password = 'Kenyon1824';     //Sets SMTP password
    $mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
-   $mail->From = 'fatchickenforwork@gmail.com';   //Sets the From email address for the message
+   $mail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
    $mail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
    $mail->AddAddress($email);  //Adds a "To" address   
    $mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
