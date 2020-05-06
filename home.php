@@ -17,6 +17,7 @@ $row=mysqli_fetch_array($result);
     <center><h3>Welcome: </h3></center>
 	 <div class="reminder">
 	      <p><a href="SchApp.php">Start Application</a></p>
+		  <p><a href="uploadFiles.php">File Submission</a></p>
     <p><a href="logout.php">Log out</a></p>
   </div>
 </div>
