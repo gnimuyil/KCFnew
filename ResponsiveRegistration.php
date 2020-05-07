@@ -16,7 +16,7 @@ body {
 
 .form-wrapper {
 width:300px;
-height:415px;
+height:435px;
   position: absolute;
   top: 50%;
   left: 48%;
@@ -139,6 +139,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
+  if (empty($_POST["pswrepeat"])){
+	  $pswrepeatErr = "Password is required";
+  } else {
+	  $pswrepeat = test_input($_POST["pswrepeat"]);
+	  $valid = true;
+	  
+	  if($password != $pswrepeat) {
+		  $pswrepeatErr = "* Passwords must match";
+		  $valid = false;
+	  }
+  }
   
   if (empty($_POST["password"])) {
     $passwordErr = "Password is required";
@@ -153,17 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
   }
   
-  if (empty($_POST["pswrepeat"])){
-	  $pswrepeatErr = "Password is required";
-  } else {
-	  $pswrepeat = test_input($_POST["pswrepeat"]);
-	  $valid = true;
-	  
-	  if($password != $pswrepeat) {
-		  $pswrepeatErr = "* Passwords must match";
-		  $valid = false;
-	  }
-  }
+
   
   if($valid){ 
        include  'insert.php';
