@@ -253,7 +253,7 @@ if (!empty($email) || !empty($Phone)||
    $Bmail->IsHTML(true);       //Sets message type to HTML    
    $Bmail->Subject = 'Submitted application of' . $email . '.';   //Sets the Subject of the message
    $Bmail->Body = $mail_body;       //An HTML or plain text message body
-		if($mail->Send())       
+   $Bmail->Send();       
  
    $mail = new PHPMailer;
    $mail->IsSMTP();        //Sets Mailer to send message using SMTP
