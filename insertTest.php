@@ -251,7 +251,7 @@ if (!empty($email) || !empty($Phone)||
    $Bmail->AddAddress('Scholarship@knoxcf.org');  //Adds a "To" address   
    $Bmail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
    $Bmail->IsHTML(true);       //Sets message type to HTML    
-   $Bmail->Subject = 'Submitted application of' . $email . '.';   //Sets the Subject of the message
+   $Bmail->Subject = 'Submitted application of ' . $email . '.';   //Sets the Subject of the message
    $Bmail->Body = $mail_body;       //An HTML or plain text message body
    $Bmail->Send();       
  
