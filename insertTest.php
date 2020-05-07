@@ -62,7 +62,8 @@ $PrevEdGradDate2 = $_POST['PrevEdGradDate2'];
 $ApplicantSignature = $_POST['ApplicantSignature'];
 $ParentGuardianSignature = $_POST['ParentGuardianSignature'];
 
- 
+if($PrevEdGradDate2=='') $PrevEdGradDate2 = ('0000-01-01');
+
 if (!empty($email) || !empty($Phone)||
     !empty($First)|| !empty($Last)|| !empty($Streetad1)|| !empty($Streetad2)|| !empty($City)|| !empty($State)|| !empty($Zip)
    || !empty($Birthdate)|| !empty($Last4SSN)|| !empty($PayPlan)|| !empty($Goals)|| !empty($FinCircumstances)|| !empty($ExtraInfo)|| !empty($GoalSchool)
