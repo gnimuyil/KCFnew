@@ -43,14 +43,7 @@
 					$_SESSION['user_id']=$row['user_id'];
 					header('location:home.php');}
 			else {
-				echo 'Please verify your email address.';}
-					
-				}
-			else if ($num_row > 0 & $row['Reviewer']==1) 
-				{			
-					$_SESSION['user_id']=$row['user_id'];
-					header('location:db/index.php');
-					
+				echo 'Please verify your email address.';}			
 				}
 			else 
 				{
