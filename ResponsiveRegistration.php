@@ -16,7 +16,7 @@ body {
 
 .form-wrapper {
 width:300px;
-height:415px;
+height:435px;
   position: absolute;
   top: 50%;
   left: 48%;
@@ -139,23 +139,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
   }
 
-  
-  if (empty($_POST["password"])) {
-    $passwordErr = "Password is required";
-  } else {
-    $password = test_input($_POST["password"]);
-	$valid = true;
-	
-	$uppercase = preg_match('@[A-Z]@', $password);
-	$lowercase = preg_match('@[a-z]@', $password);
-	$number    = preg_match('@[0-9]@', $password);
-	$specialChars = preg_match('@[^\w]@', $password);
-    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-		$passwordErr = "* Invalid pswd";
-		$valid = true;
-	}
-  }
-  
   if (empty($_POST["pswrepeat"])){
 	  $pswrepeatErr = "Password is required";
   } else {
@@ -167,6 +150,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		  $valid = false;
 	  }
   }
+  
+  if (empty($_POST["password"])) {
+    $passwordErr = "Password is required";
+  } else {
+    $password = test_input($_POST["password"]);
+	$valid = true;
+	
+	$uppercase = preg_match('@[A-Z]@', $password);
+    if(!$uppercase || strlen($password) < 8) {
+		$passwordErr = "* Password must be at least eight characters and contain at least one uppercase letter";
+		$valid = false;
+	}
+  }
+  
+
   
   if($valid){ 
        include  'insert.php';
