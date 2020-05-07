@@ -147,12 +147,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$valid = true;
 	
 	$uppercase = preg_match('@[A-Z]@', $password);
-	$lowercase = preg_match('@[a-z]@', $password);
-	$number    = preg_match('@[0-9]@', $password);
-	$specialChars = preg_match('@[^\w]@', $password);
-    if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
-		$passwordErr = "* Invalid pswd";
-		$valid = true;
+    if(!$uppercase || strlen($password) < 8) {
+		$passwordErr = "* Password must be at least eight characters and contain at least one uppercase letter";
+		$valid = false;
 	}
   }
   
