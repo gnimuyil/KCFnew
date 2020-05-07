@@ -89,7 +89,7 @@
 			$pdo = Database::connect();
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$sql = "UPDATE CentralDatabase  set First = ?, Last = ?, email = ?, Phone =?, City=?, 
-			State=?, Zip=?, StreetAd1=?, StreetAd2=? WHERE id = ?";
+			State=?, Zip=?, StreetAd1=?, StreetAd2=?, Edited=1 WHERE id = ?";
 			$q = $pdo->prepare($sql);
 			$q->execute(array($name,$Last, $email,$mobile, $City, $State, $Zip, $StreetAd1, $StreetAd2, $id));
 			Database::disconnect();
@@ -110,7 +110,7 @@
 		$StreetAd2=$data['StreetAd2'];
 		$City=$data['City'];
 		$State=$data['State'];
-		$Zip=$datap['Zip'];
+		$Zip=$data['Zip'];
 		Database::disconnect();
 	}
 ?>
