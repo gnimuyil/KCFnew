@@ -31,7 +31,7 @@
     
     			<div class="span10 offset1">
     				<div class="row">
-		    			<h3>Read a Customer</h3>
+		    			<h3>Applicant information</h3>
 		    		</div>
 		    		
 	    			<div class="form-horizontal" >
@@ -211,7 +211,123 @@
 						    </label>
 					    </div>
 					  </div>
+					  
+					  					  					 <div class="control-group">
+					    <label class="control-label">Previous Education Type</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdType'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Education Name of Institution</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdName'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Degree Attained</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdDegreeAtt'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Education graduation date</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdGradDate'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Education Type 2</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdType2'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Education Name of Institution 2</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdName2'];?>
+						    </label>
+					    </div>
+					  </div>
 
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Degree Attained 2</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdDegreeAtt2'];?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Previous Education Graduation Date 2</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php echo $data['PrevEdGradDate2'];?>
+						    </label>
+					    </div>
+					  </div>
+
+
+	
+					  					 <div class="control-group">
+					    <label class="control-label">Transcript</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+<?php
+							   	echo '<a class="btn btn-link" href="Transcript.php?id='.$data['id'].'">View</a>';
+?>
+						    </label>
+					    </div>
+					  </div>
+
+					  					 <div class="control-group">
+					    <label class="control-label">FAFSA</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+<?php
+							   	echo '<a class="btn btn-link"" href="FAFSA.php?id='.$data['id'].'">View</a>';
+?>
+					  
+						    </label>
+					    </div>
+					  </div>
+					  
+					  					  					 <div class="control-group">
+					    <label class="control-label">Financial Aid Form</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+<?php
+							   	echo '<a class="btn btn-link"" href="Aid.php?id='.$data['id'].'">View</a>';
+?>
+						    </label>
+					    </div>
+					  </div>
+					  					 <div class="control-group">
+					    <label class="control-label">Was this application edited?</label>
+					    <div class="controls">
+					      	<label class="checkbox">
+						     	<?php if($data['Edited']==1)
+									echo "yes";
+								else 
+									echo "no"
+								?>
+								
+						    </label>
+					    </div>
+					  </div>
+
+					  
 					    <div class="form-actions">
 						  <a class="btn" href="index.php">Back</a>
 					   </div>
