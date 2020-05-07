@@ -5,6 +5,14 @@ include('session.php');
 
 $result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
 $row=mysqli_fetch_array($result);
+$email=$row['email'];
+$query 		= mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
+$row1		= mysqli_fetch_array($query);
+if($row1['Reviewer']==0)
+{
+    header("location: indexreview.php");
+    exit();
+}
 
  ?>
 <!DOCTYPE html>
