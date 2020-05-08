@@ -14,11 +14,14 @@ $row=mysqli_fetch_array($result);
 </head>
 <body>
 <div class="form-wrapper"> 
-    <center><h3>Welcome: </h3></center>
+<br>
+<br>
+<br>
+<br>
+
+    <center><h4>Please fill out the application form before submitting files.<h4> </center>
 	 <div class="reminder">
-	      <p><a href="SchApp.php">Start Application</a></p>
-		  <p><a href="uploadFiles.php">Document Submission</a></p>
-    <p><a href="logout.php">Log out</a></p>
+	      <p><a href="home.php">Go back to home page</a></p>
   </div>
 </div>
 
