@@ -1,4 +1,21 @@
 <?php 
+include('dbcon.php');
+include('session.php'); 
+
+
+$result=mysqli_query($con, "select * from users where user_id='$session_id'")or die('Error In Session');
+$row=mysqli_fetch_array($result);
+$email=$row['email'];
+$query 		= mysqli_query($con, "SELECT * FROM users WHERE email='$email'");
+$row1		= mysqli_fetch_array($query);
+if($row1['Reviewer']==0)
+{
+    header("location: indexreview.php");
+    exit();
+}
+?>
+
+<?php 
 	
 	require 'database.php';
 
@@ -89,7 +106,7 @@
 			$pdo = Database::connect();
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$sql = "UPDATE CentralDatabase  set First = ?, Last = ?, email = ?, Phone =?, City=?, 
-			State=?, Zip=?, StreetAd1=?, StreetAd2=? WHERE id = ?";
+			State=?, Zip=?, StreetAd1=?, StreetAd2=?, Edited=1 WHERE id = ?";
 			$q = $pdo->prepare($sql);
 			$q->execute(array($name,$Last, $email,$mobile, $City, $State, $Zip, $StreetAd1, $StreetAd2, $id));
 			Database::disconnect();
@@ -110,7 +127,7 @@
 		$StreetAd2=$data['StreetAd2'];
 		$City=$data['City'];
 		$State=$data['State'];
-		$Zip=$datap['Zip'];
+		$Zip=$data['Zip'];
 		Database::disconnect();
 	}
 ?>

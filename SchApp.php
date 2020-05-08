@@ -404,7 +404,7 @@ function test_input($data) {
 		
 		<br>
 		<br> 
-		<p style="text-align: center;"><strong>Optional Extra Education<br /></strong></p>
+		<p style="text-align: center;"><strong>Additional Education (Optional)<br /></strong></p>
 		
 		<div class="form-item">
 			<label for="PrevEdType2">  Education Type:</label>
@@ -501,7 +501,7 @@ function test_input($data) {
 		</div>
 		
 		<hr>
-		<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>Please attach the following:</strong></span></p>
+		<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>Please attach the following documents AFTER submitting your application:</strong></span></p>
 		<ul>
               <li style="text-align: left;">
                 High School Transcript or GED

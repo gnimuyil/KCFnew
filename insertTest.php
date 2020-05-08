@@ -239,9 +239,25 @@ if (!empty($email) || !empty($Phone)||
    </tr>
   </table>
  ';
+   $Bmail = new PHPMailer;
+   $Bmail->IsSMTP();        //Sets Mailer to send message using SMTP
+   $Bmail->Host = 'smtp.gmail.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
+   $Bmail->Port = '587';        //Sets the default SMTP server port
+   $Bmail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
+   $Bmail->Username = 'Scholarship@knoxcf.org';     //Sets SMTP username
+   $Bmail->Password = 'Kenyon1824';     //Sets SMTP password
+   $Bmail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
+   $Bmail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
+   $Bmail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
+   $Bmail->AddAddress('Scholarship@knoxcf.org');  //Adds a "To" address   
+   $Bmail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
+   $Bmail->IsHTML(true);       //Sets message type to HTML    
+   $Bmail->Subject = 'Submitted application of ' . $email . '.';   //Sets the Subject of the message
+   $Bmail->Body = $mail_body;       //An HTML or plain text message body
+   $Bmail->Send();       
  
- $mail = new PHPMailer;
-	$mail->IsSMTP();        //Sets Mailer to send message using SMTP
+   $mail = new PHPMailer;
+   $mail->IsSMTP();        //Sets Mailer to send message using SMTP
    $mail->Host = 'smtp.gmail.com';  //Sets the SMTP hosts of your Email hosting, this for Godaddy
    $mail->Port = '587';        //Sets the default SMTP server port
    $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
@@ -249,7 +265,7 @@ if (!empty($email) || !empty($Phone)||
    $mail->Password = 'Kenyon1824';     //Sets SMTP password
    $mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
    $mail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
-   $mail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
+   $mail->FromName = 'Knox County Foundation';     //Sets the From name of the message
    $mail->AddAddress($email);  //Adds a "To" address   
    $mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
    $mail->IsHTML(true);       //Sets message type to HTML    
@@ -261,7 +277,7 @@ if (!empty($email) || !empty($Phone)||
 			
 			echo "\n\n Click "; 
 			echo '<a href="https://cslab.kenyon.edu/class/ssd/li2/home.php">here</a>';
-			echo  " to go back to home page for file submission.";
+			echo  " to go back to the home page to submit your documents.";
 		
 			
 		}
@@ -270,7 +286,7 @@ if (!empty($email) || !empty($Phone)||
 			echo " However, an email with a copy of your application could not be sent.";
 		}
 	  } 
-	 
+	
 	 
 	  else {
       echo "Someone already registered using this email";

@@ -34,7 +34,7 @@ if (isset($_GET['token']))
             $_SESSION['verified'] = true;
             $_SESSION['message'] = "Your email address has been verified successfully";
             $_SESSION['type'] = 'alert-success';
-            echo "Your have been verified. Click "; 
+            echo "Your account has been verified. Click "; 
 			echo '<a href="index.php">here</a>';
 			echo  " to log in.";
 			
