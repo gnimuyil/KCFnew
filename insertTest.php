@@ -130,7 +130,7 @@ if (!empty($email) || !empty($Phone)||
     <td width="70%">'.$First.'</td>
    </tr>
    <tr>
-    <td width="30%">Last Nmae</td>
+    <td width="30%">Last Name</td>
     <td width="70%">'.$Last.'</td>
    </tr>
    <tr>
@@ -269,14 +269,14 @@ if (!empty($email) || !empty($Phone)||
    $mail->AddAddress($email);  //Adds a "To" address   
    $mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
    $mail->IsHTML(true);       //Sets message type to HTML    
-   $mail->Subject = 'Copy of your KCF Vacational Scholarship Application';   //Sets the Subject of the message
+   $mail->Subject = 'Copy of your KCF Vocational Scholarship Application';   //Sets the Subject of the message
    $mail->Body = $mail_body;       //An HTML or plain text message body
 		if($mail->Send())        //Send an Email. Return true on success or false on error
 		{
 			echo "\n Please check your email for a copy of your application.";
 			
 			echo "\n\n Click "; 
-			echo '<a href="https://cslab.kenyon.edu/class/ssd/li2/home.php">here</a>';
+			echo '<a href="home.php">here</a>';
 			echo  " to go back to the home page to submit your documents.";
 		
 			
