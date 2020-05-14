@@ -248,7 +248,7 @@ if (!empty($email) || !empty($Phone)||
    $Bmail->Password = 'Kenyon1824';     //Sets SMTP password
    $Bmail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
    $Bmail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
-   $Bmail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
+   $Bmail->FromName = 'Knox County Foundation';     //Sets the From name of the message
    $Bmail->AddAddress('Scholarship@knoxcf.org');  //Adds a "To" address   
    $Bmail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
    $Bmail->IsHTML(true);       //Sets message type to HTML    
