@@ -54,10 +54,9 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    
    $mail_body = "
    <p>Hello!</p>
-   <p>Thank you for registering an account for the Knox County Foundation Vocational Scholarship Application.<p>
-   <p>Please click on the following link to verify your email - https://cslab.kenyon.edu/class/ssd/lobo1/NewestFolder/KCFnew/varifyEmail.php?token=" .$token. "<p>
-   <p>After verifying your email you will be able to login and complete your application. If you have any questions, please email Lisa Lloyd at lisa@knoxcf.org.
-   <p>Best Regards,<br /><br />Knox County Foundation</p>
+   <p>Thank you for registration. <p>
+   <p>Please follow this link to activate your account - https://cslab.kenyon.edu/class/ssd/baitan1/NewFolder/KCFnew/varifyEmail.php?token=" .$token. "<p>
+   <p>Best regards,<br />Knox County Foundation</p>
    ";
    
    $mail = new PHPMailer;
@@ -74,11 +73,11 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    $mail->AddAddress($email);  //Adds a "To" address   
    $mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
    $mail->IsHTML(true);       //Sets message type to HTML    
-   $mail->Subject = 'Knox County Foundation - Email Verification';   //Sets the Subject of the message
+   $mail->Subject = 'Email Verification';   //Sets the Subject of the message
    $mail->Body = $mail_body;       //An HTML or plain text message body
    if($mail->Send())        //Send an Email. Return true on success or false on error
    {
-    echo "Registration complete. Please check the email you registered with to verify your account!";
+    echo "Registration complete. Please check the email you registered with to verify your account";
 	$stmt->close();
     $stmt = $conn->prepare($INSERT);
     $stmt->bind_param("sss", $password, $email, $token);
@@ -87,7 +86,7 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    }
    else
    {
-	echo "Email could not be sent. Please register again using a valid email address!";
+	echo "Email could not be sent. Please register again using a valid email address";
    }
 
 
@@ -95,7 +94,7 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
   } 
   else 
   {
-   echo "Someone already registered using this email!";
+   echo "Someone already registered using this email";
   }
   $stmt->close();
   $conn->close();
