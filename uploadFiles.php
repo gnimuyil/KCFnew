@@ -282,7 +282,7 @@ if (isset($_POST["btn"]))
 			$mail->Password = 'Kenyon1824';     //Sets SMTP password
 			$mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
 			$mail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
-			$mail->FromName = 'The great LIVIBAK organization';     //Sets the From name of the message
+			$mail->FromName = 'Knox County Fundation';     //Sets the From name of the message
 			$mail->AddAddress('Scholarship@knoxcf.org');  //Adds a "To" address   
 			$mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
 			$mail->IsHTML(true);       //Sets message type to HTML    
