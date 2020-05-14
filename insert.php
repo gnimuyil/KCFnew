@@ -94,7 +94,10 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
   } 
   else 
   {
-   echo "Someone already registered using this email";
+   echo "Someone already registered using this email. <br>";
+   echo "\n\n Click "; 
+	echo '<a href="ResponsiveRegistration.php">here</a>';
+	echo  " to register again using a different email.";
   }
   $stmt->close();
   $conn->close();
