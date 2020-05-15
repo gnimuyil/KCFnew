@@ -57,7 +57,7 @@ if($row1['Reviewer']==0)
 			$nameError = 'Please enter Name';
 			$valid = false;
 		}
-		
+/* 		
 		if (empty($email)) {
 			$emailError = 'Please enter Email Address';
 			$valid = false;
@@ -65,7 +65,7 @@ if($row1['Reviewer']==0)
 			$emailError = 'Please enter a valid Email Address';
 			$valid = false;
 		}
-		
+		 */
 		if (empty($mobile)) {
 			$mobileError = 'Please enter Mobile Number';
 			$valid = false;
@@ -105,10 +105,10 @@ if($row1['Reviewer']==0)
 		if ($valid) {
 			$pdo = Database::connect();
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-			$sql = "UPDATE CentralDatabase  set First = ?, Last = ?, email = ?, Phone =?, City=?, 
+			$sql = "UPDATE CentralDatabase  set First = ?, Last = ?,  Phone =?, City=?, 
 			State=?, Zip=?, Streetad1=?, Streetad2=?, Edited=1 WHERE id = ?";
 			$q = $pdo->prepare($sql);
-			$q->execute(array($name,$Last, $email,$mobile, $City, $State, $Zip, $StreetAd1, $StreetAd2, $id));
+			$q->execute(array($name,$Last,$mobile, $City, $State, $Zip, $StreetAd1, $StreetAd2, $id));
 			Database::disconnect();
 			header("Location: index.php");
 		}
@@ -171,15 +171,7 @@ if($row1['Reviewer']==0)
 					    </div>
 					  </div>
 					  
-					  <div class="control-group <?php echo !empty($emailError)?'error':'';?>">
-					    <label class="control-label">Email Address</label>
-					    <div class="controls">
-					      	<input name="email" type="text" placeholder="Email Address" value="<?php echo !empty($email)?$email:'';?>">
-					      	<?php if (!empty($emailError)): ?>
-					      		<span class="help-inline"><?php echo $emailError;?></span>
-					      	<?php endif;?>
-					    </div>
-					  </div>
+
 					  <div class="control-group <?php echo !empty($mobileError)?'error':'';?>">
 					    <label class="control-label">Phone Number</label>
 					    <div class="controls">
