@@ -189,16 +189,18 @@ $Phone = $Zip = $Last4SSN = $First = $Last = $Streetad1 = $Streetad2 = $Gender =
 $PhoneErr = $ZipErr = $Last4SSNErr = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$valid = true;
+	$valid1 = true;
+	$valid2 = true;
+	$valid3 = true;
 	
 		 if(!preg_match('/^[0-9]{10}$/', $_POST['Phone']))
 		{
 			$PhoneErr = "Please use the valid format: XXXXXXXXXX";
-			$valid = false;
+			$valid1 = false;
 		}
 		else {
 	  $Phone = test_input($_POST["Phone"]);
-	  $valid=true;
+	  $valid1=true;
 	  }
     
 
@@ -207,21 +209,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 		{
 			$ZipErr = "Please enter a 5 digit Zip code";
-			$valid = false;
+			$valid2 = false;
 		}
 		else {
 	  $Zip = test_input($_POST["Zip"]);
-	  $valid=true;
+	  $valid2=true;
 	  }
 
  if(!preg_match('/^[0-9]{4}$/', $_POST['Last4SSN']))
 	{
 		$Last4SSNErr = "Please enter a 4 digit number";
-		$valid = false;
+		$valid3 = false;
 	}
 	else {
 	  $Last4SSN = test_input($_POST["Last4SSN"]);
-	  $valid=true;
+	  $valid3=true;
 	}
     
 	$First = test_input($_POST["First"]);
@@ -255,7 +257,7 @@ if(!preg_match('/^[0-9]{5}$/', $_POST['Zip']))
 	$ParentGuardianSignature = test_input($_POST["ParentGuardianSignature"]);
 	
  
-  if($valid){ 
+  if($valid1& $valid2& $valid3){ 
        include  'insertTest.php';
        exit;       
   } 
