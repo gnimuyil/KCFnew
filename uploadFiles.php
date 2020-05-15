@@ -193,7 +193,9 @@ if($num_row==0)
 	<form method ="post" enctype="multipart/form-data">
 	<div class="form-wrapper">
 	<h3>Document Submission</h3>
-	<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>In order to be eligible for the Knox County Fundation Vocational Scholarship, the following documents are required:</strong></span></p>
+	<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>In order to be eligible for the Knox County Foundation Vocational Scholarship, the following documents are required:</strong></span></p>
+		<p style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif;"><strong>Please make sure that your files are in pdf format under 5 mb</strong></span></p>
+
 	<ul>
 			<li style="text-align: left;">
 			High School Transcript or GED
@@ -282,7 +284,7 @@ if (isset($_POST["btn"]))
 			$mail->Password = 'Kenyon1824';     //Sets SMTP password
 			$mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
 			$mail->From = 'Scholarship@knoxcf.org';   //Sets the From email address for the message
-			$mail->FromName = 'Knox County Fundation';     //Sets the From name of the message
+			$mail->FromName = 'Knox County Foundation';     //Sets the From name of the message
 			$mail->AddAddress('Scholarship@knoxcf.org');  //Adds a "To" address   
 			$mail->WordWrap = 50;       //Sets word wrapping on the body of the message to a given number of characters
 			$mail->IsHTML(true);       //Sets message type to HTML    
@@ -292,7 +294,7 @@ if (isset($_POST["btn"]))
 		} 
 		else 
 		{
-			echo "Files failed to upload. Please make sure that your files are under 2 mb<br />";
+			echo "Files failed to upload. Please make sure that your files are under 5 mb<br />";
 		}			
 	}
 	else

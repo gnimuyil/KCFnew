@@ -119,7 +119,7 @@ if (!empty($email) || !empty($Phone)||
 	  $PayPlan, $Goals, $FinCircumstances, $ExtraInfo, $GoalSchool, $AdminStatus, $AnticipProg,
       $ProgCost, $StartDate, $FirstPayDate, $CurrentDate, $PrevEdType, $PrevEdName, $PrevEdDegreeAtt, $PrevEdGradDate, $ApplicantSignature, $ParentGuardianSignature, $PrevEdType2, $PrevEdName2, $PrevEdDegreeAtt2, $PrevEdGradDate2);
       $stmt->execute();
-      echo "You applicaiton has been submitted!\n";
+      echo "Your application has been submitted!\n";
      
 	 
 	  $mail_body = '
