@@ -54,9 +54,10 @@ if (!empty($password) || !empty($email) || !empty($pswrepeat))
    
    $mail_body = "
    <p>Hello!</p>
-   <p>Thank you for registration. <p>
-   <p>Please follow this link to activate your account - https://cslab.kenyon.edu/class/ssd/baitan1/NewFolder/KCFnew/varifyEmail.php?token=" .$token. "<p>
-   <p>Best regards,<br />Knox County Foundation</p>
+   <p>Thank you for registering an account for the Knox County Foundation Vocational Scholarship Application.<p>
+   <p>Please click on the following link to verify your email - https://cslab.kenyon.edu/class/ssd/baitan1/NewFolder/KCFnew/varifyEmail.php?token=" .$token. "<p>
+   <p>After verifying your email you will be able to login and complete your application. If you have any questions, please email Lisa Lloyd at lisa@knoxcf.org.
+   <p>Best Regards,<br /><br />Knox County Foundation</p>
    ";
    
    $mail = new PHPMailer;

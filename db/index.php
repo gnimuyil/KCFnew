@@ -33,9 +33,10 @@ if($row1['Reviewer']==0)
 				<table class="table table-striped table-bordered">
 		              <thead>
 		                <tr>
-		                  <th>Name</th>
+		                  <th>First Name</th>
+						  <th>Last Name</th>
 		                  <th>Email Address</th>
-		                  <th>Mobile Number</th>
+		                  <th>Phone Number</th>
 		                  <th>Action</th>
 		                </tr>
 		              </thead>
@@ -47,6 +48,7 @@ if($row1['Reviewer']==0)
 	 				   foreach ($pdo->query($sql) as $row) {
 						   		echo '<tr>';
 							   	echo '<td>'. $row['First'] . '</td>';
+								echo '<td>'. $row['Last'] . '</td>';
 							   	echo '<td>'. $row['email'] . '</td>';
 							   	echo '<td>'. $row['Phone'] . '</td>';
 							   	echo '<td width=250>';

@@ -81,10 +81,10 @@ if($row1['Reviewer']==0)
 			$valid = false;
 		}
 				
-		if (empty($StreetAd2)) {
+/* 		if (empty($StreetAd2)) {
 			$StreetAd2Error = 'Please enter street address 2';
 			$valid = false;
-		}
+		} */
 				
 		if (empty($City)) {
 			$CityError = 'Please enter city';
@@ -106,7 +106,7 @@ if($row1['Reviewer']==0)
 			$pdo = Database::connect();
 			$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			$sql = "UPDATE CentralDatabase  set First = ?, Last = ?, email = ?, Phone =?, City=?, 
-			State=?, Zip=?, StreetAd1=?, StreetAd2=?, Edited=1 WHERE id = ?";
+			State=?, Zip=?, Streetad1=?, Streetad2=?, Edited=1 WHERE id = ?";
 			$q = $pdo->prepare($sql);
 			$q->execute(array($name,$Last, $email,$mobile, $City, $State, $Zip, $StreetAd1, $StreetAd2, $id));
 			Database::disconnect();
@@ -119,12 +119,12 @@ if($row1['Reviewer']==0)
 		$q = $pdo->prepare($sql);
 		$q->execute(array($id));
 		$data = $q->fetch(PDO::FETCH_ASSOC);
-		$name = $data['name'];
+		$name = $data['First'];
 		$email = $data['email'];
-		$mobile = $data['mobile'];
+		$mobile = $data['Phone'];
 		$Last = $data['Last'];
-		$StreetAd1=$data['StreetAd1'];
-		$StreetAd2=$data['StreetAd2'];
+		$StreetAd1=$data['Streetad1'];
+		$StreetAd2=$data['Streetad2'];
 		$City=$data['City'];
 		$State=$data['State'];
 		$Zip=$data['Zip'];
@@ -205,7 +205,7 @@ if($row1['Reviewer']==0)
 					  
 					      		
 	    			<form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
-					  <div class="control-group <?php echo !empty($StreetAd1Error)?'error':'';?>">
+					  <div class="control-group <?php echo !empty($StreetAd2Error)?'error':'';?>">
 					    <label class="control-label">Street Address 2 </label>
 					    <div class="controls">
 					      	<input name="StreetAd2" type="text"  placeholder="Street Address 2" value="<?php echo !empty($StreetAd2)?$StreetAd2:'';?>">
